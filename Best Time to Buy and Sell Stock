@@ -1,0 +1,26 @@
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& nums) {
+        int st = nums[0];
+        int maxi = 0;
+        for(int i = 0 ;i < nums.size();i++)
+        {
+            if(nums[i] < st)
+            st = nums[i];
+
+            maxi = max(maxi, nums[i] - st);
+        }
+        return maxi;
+    }
+};
+
+/*
+approach: what we have to do when we get smaller value then current element then replace st with  new value [master step]
+otherwise for each case , find maxi 
+
+time complexity: O(n)
+space complexity: O(1)
+
+*/
