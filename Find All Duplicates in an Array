@@ -1,0 +1,35 @@
+https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+
+        vector<int> vt;
+
+      for (int i = 0; i < nums.size(); i++) {
+         int index = abs(nums[i]) - 1;
+    
+            if (nums[index] < 0) 
+                     vt.push_back(index + 1); 
+             else 
+                 nums[index] = -nums[index]; 
+    
+        }
+
+
+        return vt;
+
+
+        
+    }
+};
+
+
+/*
+approach: 
+what we can do, to mark any element as visited we will go to nums[i]-1 position 
+and mark c/s element as negative
+
+if we go to any location that's value is already negative it means that we have got the double element in that case we have to put jumped position +1 in vector
+
+*/
