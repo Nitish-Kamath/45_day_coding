@@ -1,0 +1,29 @@
+https://leetcode.com/problems/find-the-duplicate-number/description/
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+
+        vector<int>vt(nums.size()+1,0);
+
+        for(int i = 0 ;i < nums.size();i++)
+        {
+            vt[nums[i]] += 1;
+
+            if(vt[nums[i]] > 1)
+            return nums[i];
+
+        }
+        return -1;
+    }
+};
+
+/*
+approach: Here we are making frequency vector to take count of frequency of each element 
+if frequency > 1 then that element must be repeating may be 2 times ,3 times
+so correspondingly we have to return that element.
+time complexity : O(n)
+space complexity: O(n)
+
+
+*/
