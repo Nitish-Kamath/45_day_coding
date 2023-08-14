@@ -1,0 +1,29 @@
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& nums) {
+
+        int profit = 0;
+        for(int i = 1 ;i < nums.size();i++)
+        {
+            if(nums[i] > nums[i-1])
+                profit += (nums[i] - nums[i-1]);
+        }
+        return profit;
+    }
+};
+
+/*
+impt observation:
+if you take diff  between (1,10) => [ 10 - 1 = 9]
+it would be same if we break it into any interval  (1,2,3,4,10) => (2- 1) + (3-2) + (4 - 3) + (10 - 4) 
+-> 1  + 1 + 1 + 6 = 9 [same as prev value :)]
+
+i.e if we insert any mid value then diff. would not change
+
+approach :  based on above observation 
+since we have to make max profit  so whenever there is profit ( i.e next element greater thatn current element ) then we will take diff and add it to profit
+
+
+*/
