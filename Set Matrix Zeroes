@@ -1,0 +1,56 @@
+https://leetcode.com/problems/set-matrix-zeroes/description/
+
+
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        
+      vector<int> row(matrix.size(),0);
+      vector<int> col(matrix[0].size(),0);
+
+        // if element value is 0 then its row index is stored in row matrix 
+          // if element value is 0 then its col index is stored in col matrix 
+        for(int i = 0;i < matrix.size();i++)
+        {
+            for(int j = 0 ;j < matrix[0].size();j++)
+            {
+                if(matrix[i][j] == 0)
+                {
+                    row[i] = 1;
+                    col[j] = 1;
+
+                }
+            }
+        }
+
+    for(int i = 0 ;i < row.size();i++)
+    {
+        if(row[i] == 1)
+        {
+            for(int j = 0;j < matrix[0].size();j++)
+            {
+                    matrix[i][j] = 0;
+            }
+        }
+    }
+
+     for(int i = 0 ;i < col.size();i++)
+    {
+        if(col[i] == 1)
+        {
+            for(int j = 0;j < matrix.size();j++)
+            {
+                    matrix[j][i] = 0;
+            }
+        }
+    }
+      
+    }
+};
+
+
+/*approach01: first of all store all 0th element position in row matrix and col matrix then traverse through matrix make the c/s row and col element as zero
+time complexity  :- O(n*m)
+space complexity :- O(n + m)
+
+ */
