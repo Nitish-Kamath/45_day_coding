@@ -1,0 +1,41 @@
+https://leetcode.com/problems/move-zeroes/description/
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+
+
+        int k = 0;
+        for(int i = 0 ;i < nums.size();i++)
+        {
+            if(nums[i]!= 0)
+            nums[k++] = nums[i];
+        }
+
+        for(int i = k ; i < nums.size();i++)
+        {
+            nums[k++] = 0;
+        }
+        
+    }
+};
+
+/*
+approach01: one simple approach is that we can make another vector(let vt) of same size and initialise then with zero then we will traverse through nums and when non zero element is found , push it to vt.
+time complexity: O(n)
+space complexoty: O(n)
+
+approach02[in-place]: a little bit tricky (better dry run to get the idea)
+what we have to do is we have to move in the same way as in approach01
+but when element value not equals to zero then override the value 
+with the value present at index k[element may/may not  be zero ] 
+
+after filling all the non zero value, traverse through nums and put zero value for remaining place
+
+time complexity : O(n)
+space complexity : O(1)
+
+
+
+
+*/
