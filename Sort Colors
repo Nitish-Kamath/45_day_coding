@@ -1,0 +1,41 @@
+https://leetcode.com/problems/sort-colors/description/
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+
+        int zero_count = 0;
+        int one_count = 0;
+        int two_count = 0;
+
+        for(auto x : nums)
+        {
+            if(x == 0)
+                zero_count++;
+            else if(x == 1)
+                one_count++;
+            else
+                two_count++;
+        }
+
+        int k = 0;
+        while(zero_count--)
+            nums[k++] = 0;
+            
+         while(one_count--)
+            nums[k++] = 1;
+
+         while(two_count--)
+            nums[k++] = 2;
+        
+    }
+};
+
+/*
+approach: This is pretty straight forward question[since we know we have only three element :)]
+we have to take count of zero, one, two.
+then by running while loop we will override the nums array
+time complexity : O(n)
+space complexity O(k) [ k == 3]
+
+*/
