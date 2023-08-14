@@ -1,0 +1,27 @@
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        map<int,int> mp;
+
+        for(auto x : nums)
+        mp[x]++;
+
+        int k = 0;
+        for(auto x : mp)
+        nums[k++] = x.first;
+
+        return mp.size();
+    }
+};
+
+/*
+approach: 
+since it is taking about unique elment so we can either use set of map[preferred]
+what we have to do, put all elements in map [it will take care of ascending order as well as uniqueness]
+then override nums element with map element
+at end return mp.size() [gives out number of unique element ] 
+
+
+*/
