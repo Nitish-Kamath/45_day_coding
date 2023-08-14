@@ -1,0 +1,74 @@
+https://leetcode.com/problems/subarray-sums-divisible-by-k/description/
+
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+
+
+        unordered_map<int,int> mp;
+        int sum = 0;
+        int rdr = 0;
+        int count = 0;
+        // think of case if k = 5 and in nums first element is 5
+            mp[0] = 1;
+
+        for(int i = 0 ;i < nums.size();i++)
+        {
+            sum += nums[i];
+
+            rdr = sum % k;
+
+
+        
+            if(rdr < 0)
+            rdr  = rdr + k;
+
+            if(mp.find(rdr) != mp.end())
+            count = count + mp[rdr];
+
+            mp[rdr]++;
+        }
+
+        return count;
+        
+    }
+};
+
+/*
+** CLASS QUESTION **
+concept 01: 
+
+
+3 % 5 == 3
++1 => 4 % 5 == 4
++2 => 5 % 5 == 0
++3 => 6 % 5 == 1
++4 => 7 % 5 == 2
++5 => 8 % 5 == 3
+
+so we conclude that 
+if 
+a % b == c
+then (a + k*b) % b == c
+
+concept 02:
+
+for 5, 0 , -5
+5 % 5 == 0 so  ans -> 1
+5 + 0 % 5 == 0 so  ans = 1 + curr_len (i.e 2)   = 1 + 2 = 3 
+so total number of subarray possible equals = 3
+
+so total number of subarray possible equals = prev_ans + new_length(including the new element)
+
+
+approach: 
+what we have to do here: 
+if we have to add each value in sum variable and check if remainder already present in map or not  
+if no -> the sum is new
+if yes -> then we are damn sure that multiple of dividend is added to sum 
+so in that case we have to calculate answer so answer would be count += mp[remainder]
+
+time complexity : O(nlogn)
+space complexity : O(k)
+
+*/
