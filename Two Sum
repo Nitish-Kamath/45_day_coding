@@ -1,0 +1,35 @@
+https://leetcode.com/problems/two-sum/description/
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        unordered_map<int,int> mp;
+        
+        for(int i = 0 ;i < nums.size();i++)
+        {
+            if(mp.find(nums[i])!= mp.end())
+            {
+               int idx1  = mp.find(nums[i]) -> second;
+                 return {idx1,i};
+            }
+
+            mp[target - nums[i]] = i;
+        }
+        return {};
+        
+    }
+};
+
+/*
+approach: 
+what we will do, for each element we will check if given element is present in map or not 
+if not -> put target - nums[i] in map as key, index as value[master step]
+if yes -> we get the solution since in question it is given that there is only one solution 
+so we will get both index put into res and return it 
+
+time complexity : O(nlogn)
+space complexity : O(n)
+
+
+*/
